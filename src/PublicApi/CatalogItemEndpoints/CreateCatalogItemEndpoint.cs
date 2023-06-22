@@ -57,7 +57,11 @@ public class CreateCatalogItemEndpoint : IEndpoint<IResult, CreateCatalogItemReq
             //  In production, we recommend uploading to a blob storage and deliver the image via CDN after a verification process.
 
             // newItem.UpdatePictureUri("eCatalog-item-default.png");
-            newItem.UpdatePictureUri("https://placehold.co/256x256.png");
+            var utils = new Utility();
+            string image = await utils.GenerateAiPictureUriAsync(request.Name + request.Description);
+
+            newItem.UpdatePictureUri(image);
+            // newItem.UpdatePictureUri("https://placehold.co/256x256.png");
             await itemRepository.UpdateAsync(newItem);
         }
 

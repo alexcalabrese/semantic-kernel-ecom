@@ -14,7 +14,6 @@ public class CatalogItem : BaseEntity, IAggregateRoot
     public CatalogType? CatalogType { get; private set; }
     public int CatalogBrandId { get; private set; }
     public CatalogBrand? CatalogBrand { get; private set; }
-
     public CatalogItem(int catalogTypeId,
         int catalogBrandId,
         string description,
@@ -52,27 +51,6 @@ public class CatalogItem : BaseEntity, IAggregateRoot
         Guard.Against.Zero(catalogTypeId, nameof(catalogTypeId));
         CatalogTypeId = catalogTypeId;
     }
-
-    // public void GenerateAiPictureUri(string description)
-    // {
-    //     if (string.IsNullOrEmpty(pictureUri))
-    //     {
-    //         PictureUri = string.Empty;
-    //         return;
-    //     }
-    //     var dallE = kernel.GetService<IImageGeneration>();
-
-    //     var genImgDescription = kernel.CreateSemanticFunction(@"
-    //     {{$input}}
-
-    //     Given the above keywords think about a related image and describe the image with one detailed sentence. 
-    //     The description cannot contain numbers.", maxTokens: 256, temperature: 1);
-
-    //     var imageDescription = await genImgDescription.InvokeAsync(description);
-
-    //     var imageUrl = await dallE.GenerateImageAsync(imageDescription, 256, 256);
-    //     UpdatePictureUri(imageUrl);
-    // }
 
     public void UpdatePictureUri(string pictureName)
     {
