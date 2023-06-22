@@ -259,3 +259,4 @@ pub/
 .eshopdocker_*
 semantic-kernel-demo/config/settings.json
 semantic-kernel-demo/config/settings_2.json
+src/ApplicationCore/config/settings.json
