@@ -21,8 +21,6 @@ public class Utility {
 
     public async Task<string> GenerateAiPictureUriAsync(string description)
     {
-        var dallE = _kernel.GetService<IImageGeneration>();
-
         var genImgDescription = _kernel.CreateSemanticFunction(@"
         {{$input}}
 
@@ -32,9 +30,9 @@ public class Utility {
         var imageDescription = await genImgDescription.InvokeAsync(description);
         string imageDescriptionString = imageDescription.ToString();
 
+        var dallE = _kernel.GetService<IImageGeneration>();
         var imageUrl = await dallE.GenerateImageAsync(imageDescriptionString, 256, 256);
         
-        // Log imageUrl to console
         Console.WriteLine("--- Image URL ---");
         Console.WriteLine(imageUrl);
         Console.WriteLine("--- Image URL ---");

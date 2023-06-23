@@ -59,7 +59,6 @@ public class CatalogItem : BaseEntity, IAggregateRoot
             PictureUri = string.Empty;
             return;
         }
-        // PictureUri = $"images\\products\\{pictureName}?{new DateTime().Ticks}";
         PictureUri = pictureName;
     }
 
