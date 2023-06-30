@@ -11,7 +11,8 @@ The new capabilities consist in:
 
 2. Use that prompt to create an image of the product using DALL-E.
 
-For convenience, the new features are located in  `src/ApplicationCore/Entities/Utility.cs`, you can check the code clicking [here](https://github.com/alexcalabrese/semantic-kernel-ecom/blob/dd3904e973977b415c0200d2e22674b979ac6447/src/ApplicationCore/Entities/Utility.cs#L8).
+For convenience, the new features are located in  `src/ApplicationCore/Entities/Utility.cs`, you can check the code clicking [here](https://github.com/alexcalabrese/semantic-kernel-ecom/blob/main/src/ApplicationCore/Entities/Utility.cs#L8).
+
 
 This is an example of a generated image using this demo:
 
