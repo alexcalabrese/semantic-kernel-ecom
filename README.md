@@ -24,7 +24,7 @@ This is an example of a generated image using this demo:
 
 ## Running the sample
 
-> ⚠️ In order to use AI capabilites you have to add a `setting.json` file with your credentials in `src/ApplicationCore/config/`.
+> ⚠️ In order to use AI capabilites you have to add a `settings.json` file with your credentials in `src/ApplicationCore/config/`.
 
 The store's home page should look like this:
 
