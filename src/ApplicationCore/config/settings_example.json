@@ -1,0 +1,8 @@
+{
+    "type": "azure",
+    "model": "name of your deployed model for text generation",
+    "endpoint": "endpoint of your deployed model for text generation",
+    "apikey": "key of your deployed model for text generation",
+    "org": "",
+    "openAIApiKey": "your openAI api key to use DALL-E"
+  }

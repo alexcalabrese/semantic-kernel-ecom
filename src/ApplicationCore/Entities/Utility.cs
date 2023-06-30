@@ -9,7 +9,7 @@ public class Utility {
     public IKernel? _kernel { get; set; }
 
     public Utility(){
-        var (useAzureOpenAI, model, azureEndpoint, apiKey, orgId, bingApiKey, openAIApiKey) = Settings.LoadFromFile();
+        var (useAzureOpenAI, model, azureEndpoint, apiKey, orgId, openAIApiKey) = Settings.LoadFromFile();
 
         if(_kernel == null){
             _kernel = new KernelBuilder()

@@ -16,13 +16,12 @@ public static class Settings
     private const string EndpointKey = "endpoint";
     private const string SecretKey = "apikey";
     private const string OrgKey = "org";
-    private const string BingApiKey = "apikey";
 
     private const string OpenAIApiKey = "openAIApiKey";
     private const bool StoreConfigOnFile = true;
 
     // Load settings from file
-    public static (bool useAzureOpenAI, string model, string azureEndpoint, string apiKey, string orgId, string bingApiKey, string openAIApiKey)
+    public static (bool useAzureOpenAI, string model, string azureEndpoint, string apiKey, string orgId, string openAIApiKey)
         LoadFromFile(string configFile = DefaultConfigFile)
     {
         if (!File.Exists(DefaultConfigFile))
@@ -41,15 +40,14 @@ public static class Settings
             string apiKey = config[SecretKey];
             string orgId = config[OrgKey];
             if (orgId == "none") { orgId = ""; }
-            string bingApiKey = config[BingApiKey];
             string openAIApiKey = config[OpenAIApiKey];
 
-            return (useAzureOpenAI, model, azureEndpoint, apiKey, orgId, bingApiKey, openAIApiKey);
+            return (useAzureOpenAI, model, azureEndpoint, apiKey, orgId, openAIApiKey);
         }
         catch (Exception e)
         {
             Console.WriteLine("Something went wrong: " + e.Message);
-            return (true, "", "", "", "", "", "");
+            return (true, "", "", "", "", "");
         }
     }
 
@@ -70,7 +68,7 @@ public static class Settings
     }
 
     // Read and return settings from file
-    private static (bool useAzureOpenAI, string model, string azureEndpoint, string apiKey, string orgId, string bingApiKey, string openAIApiKey)
+    private static (bool useAzureOpenAI, string model, string azureEndpoint, string apiKey, string orgId, string openAIApiKey)
         ReadSettings(bool _useAzureOpenAI, string configFile)
     {
         // Save the preference set in the notebook
@@ -79,14 +77,13 @@ public static class Settings
         string azureEndpoint = "";
         string apiKey = "";
         string orgId = "";
-        string bingApiKey = "";
         string openAIApiKey = "";
 
         try
         {
             if (File.Exists(configFile))
             {
-                (useAzureOpenAI, model, azureEndpoint, apiKey, orgId, bingApiKey, openAIApiKey) = LoadFromFile(configFile);
+                (useAzureOpenAI, model, azureEndpoint, apiKey, orgId, openAIApiKey) = LoadFromFile(configFile);
             }
         }
         catch (Exception e)
@@ -103,16 +100,15 @@ public static class Settings
             azureEndpoint = "";
             apiKey = "";
             orgId = "";
-            bingApiKey = "";
             openAIApiKey = "";
         }
 
-        return (useAzureOpenAI, model, azureEndpoint, apiKey, orgId, bingApiKey, openAIApiKey);
+        return (useAzureOpenAI, model, azureEndpoint, apiKey, orgId, openAIApiKey);
     }
 
     // Write settings to file
     private static void WriteSettings(
-        string configFile, bool useAzureOpenAI, string model, string azureEndpoint, string apiKey, string orgId, string bingApiKey, string openAIApiKey)
+        string configFile, bool useAzureOpenAI, string model, string azureEndpoint, string apiKey, string orgId, string openAIApiKey)
     {
         try
         {
@@ -125,7 +121,6 @@ public static class Settings
                     { EndpointKey, azureEndpoint },
                     { SecretKey, apiKey },
                     { OrgKey, orgId },
-                    { BingApiKey, bingApiKey },
                     { OpenAIApiKey, openAIApiKey}
                 };
 
